@@ -1,0 +1,1 @@
+# amplicode-addon-email-templates
