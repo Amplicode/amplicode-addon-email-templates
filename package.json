@@ -22,7 +22,12 @@
     "type": "git",
     "url": "git+https://github.com/Amplicode/amplicode-addon-email-templates.git"
   },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-admin": "^4.11.1"
+  },
   "devDependencies": {
+    "autoprefixer": "^10.4.14",
     "eslint": "^8.42.0",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
@@ -39,10 +44,5 @@
   "bugs": {
     "url": "https://github.com/Amplicode/amplicode-addon-email-templates/issues"
   },
-  "homepage": "https://github.com/Amplicode/amplicode-addon-email-templates#readme",
-  "dependencies": {
-    "autoprefixer": "^10.4.14",
-    "react": "^18.2.0",
-    "react-admin": "^4.11.1"
-  }
+  "homepage": "https://github.com/Amplicode/amplicode-addon-email-templates#readme"
 }
