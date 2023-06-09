@@ -1,6 +1,6 @@
 {
   "name": "@amplicode/addon-email-templates",
-  "version": "0.0.1",
+  "version": "0.0.8",
   "description": "Email templates addon for amplicode frontend app",
   "publishConfig": {
     "access": "public"
@@ -16,21 +16,41 @@
     "clean": "rimraf dist",
     "test": "jest",
     "prepublishOnly": "npm run compile",
-    "lint": "eslint src/"
+    "lint": "eslint src/",
+    "generate": "graphql-codegen"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Amplicode/amplicode-addon-email-templates.git"
   },
   "dependencies": {
+    "@codemirror/lang-css": "^6.2.0",
+    "@codemirror/lang-html": "^6.4.3",
+    "@haulmont/ra-language-russian": "^4.0.0",
+    "@uiw/react-codemirror": "^4.19.16",
+    "axios": "^1.4.0",
+    "ckeditor4": "^4.21.0",
+    "grapesjs": "^0.21.1",
+    "grapesjs-plugin-export": "^1.0.11",
+    "grapesjs-preset-newsletter": "^1.0.1",
+    "js-beautify": "^1.14.7",
+    "juice": "^9.0.0",
+    "ra-ui-materialui": "^4.11.2",
     "react": "^18.2.0",
     "react-admin": "^4.11.1"
   },
   "devDependencies": {
+    "@amplicode/gql": "file:src/gql",
+    "@graphql-codegen/cli": "^3.0.0",
+    "@graphql-codegen/gql-tag-operations-preset": "^2.0.0",
+    "@graphql-codegen/typescript": "^3.0.0",
+    "@types/ckeditor4": "^4.16.5",
+    "@types/js-beautify": "^1.13.3",
     "autoprefixer": "^10.4.14",
     "eslint": "^8.42.0",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "^2.8.8",
     "rollup": "^2.77.4-1",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-json": "^4.0.0",
