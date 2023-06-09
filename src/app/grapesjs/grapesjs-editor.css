@@ -1,0 +1,33 @@
+.gjs-one-bg {
+  background-color: #eeeded !important;
+}
+
+.gjs-rte-toolbar {
+  width: max-content;
+}
+
+.gjs-two-color {
+  color: #5d5d60 !important;
+}
+
+.gjs-three-bg {
+  background-color: #0288d1 !important;
+  color: white !important;
+}
+
+.gjs-four-color,
+.gjs-four-color-h:hover {
+  color: #03a9f4 !important;
+}
+
+.gjs-layer-name {
+  height: auto !important;
+}
+
+.gjs-layer {
+  overflow-x: auto;
+}
+
+.gjs-layer-move, .gjs-layer-vis {
+  box-sizing: content-box !important;
+}

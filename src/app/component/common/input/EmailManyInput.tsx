@@ -1,6 +1,6 @@
 import {required as requiredValidator, useInput, useNotify, useTranslate} from "react-admin";
 import TextField from "@mui/material/TextField";
-import * as React from "react";
+
 import {useCallback} from "react";
 import Autocomplete from "@mui/material/Autocomplete";
 import Chip from "@mui/material/Chip";

@@ -1,0 +1,351 @@
+# THIS FILE WAS GENERATED AUTOMATICALLY. DO NOT EDIT.
+directive @negativeOrZero on INPUT_FIELD_DEFINITION
+
+directive @notBlank on INPUT_FIELD_DEFINITION
+
+directive @futureOrPresent on INPUT_FIELD_DEFINITION
+
+directive @past on INPUT_FIELD_DEFINITION
+
+directive @pastOrPresent on INPUT_FIELD_DEFINITION
+
+directive @positiveOrZero on INPUT_FIELD_DEFINITION
+
+directive @javaType(name: String!) on SCALAR
+
+directive @size(max: Int = 2147483647, min: Int = 0) on INPUT_FIELD_DEFINITION
+
+directive @null on INPUT_FIELD_DEFINITION
+
+directive @notEmpty on INPUT_FIELD_DEFINITION
+
+directive @assertFalse on INPUT_FIELD_DEFINITION
+
+directive @pattern(regexp: String!) on INPUT_FIELD_DEFINITION
+
+directive @negative on INPUT_FIELD_DEFINITION
+
+directive @min(value: Long!) on INPUT_FIELD_DEFINITION
+
+directive @assertTrue on INPUT_FIELD_DEFINITION
+
+directive @email(regexp: String = ".*") on INPUT_FIELD_DEFINITION
+
+directive @max(value: Long!) on INPUT_FIELD_DEFINITION
+
+directive @length(max: Int = 2147483647, min: Int = 0) on INPUT_FIELD_DEFINITION
+
+directive @positive on INPUT_FIELD_DEFINITION
+
+directive @url on INPUT_FIELD_DEFINITION
+
+directive @decimalMax(inclusive: Boolean = true, value: String!) on INPUT_FIELD_DEFINITION
+
+directive @future on INPUT_FIELD_DEFINITION
+
+directive @digits(fraction: Int!, integer: Int!) on INPUT_FIELD_DEFINITION
+
+directive @decimalMin(inclusive: Boolean = true, value: String!) on INPUT_FIELD_DEFINITION
+
+type EmailAttachment {
+  contentDisposition: String
+  id: ID
+  message: EmailMessage
+  name: String
+  version: Int
+}
+
+type EmailMessage {
+  attachments: [EmailAttachment]
+  bcc: String
+  bodyContentType: String
+  cc: String
+  contentText: String
+  createdDate: LocalDateTime
+  from: String
+  id: ID
+  sendingStatus: SendingStatus
+  sendingDate: LocalDateTime
+  subject: String
+  to: String
+  version: Int
+}
+
+type EmailMessageResultPage {
+  content: [EmailMessage]
+  totalElements: Long!
+}
+
+type EmailTemplate {
+  attachments: [EmailTemplateAttachment]
+  bcc: [String!]
+  bodyContent: String!
+  cc: [String!]
+  code: String!
+  description: String
+  from: String
+  id: ID
+  name: String!
+  parameters: [EmailTemplateParameter]
+  subject: String
+  to: [String!]
+  version: Int
+}
+
+type EmailTemplateAttachment {
+  emailTemplate: EmailTemplate
+  id: ID
+  name: String!
+  version: Int
+}
+
+type EmailTemplateJobModel {
+  bcc: [String!]
+  cc: [String!]
+  cronExpression: String!
+  startDate: LocalDateTime
+  endDate: LocalDateTime
+  description: String!
+  emailTemplate: EmailTemplate!
+  from: String
+  id: String
+  parameterValues: [EmailTemplateParameterValue]
+  state: JobState
+  subject: String
+  to: [String!]
+}
+
+type EmailTemplateParameter {
+  alias: String!
+  emailTemplate: EmailTemplate!
+  id: ID
+  name: String!
+  orderNumber: Int
+  parameterType: ParameterType!
+  required: Boolean
+  version: Int
+}
+
+type EmailTemplateResultPage {
+  content: [EmailTemplate]
+  totalElements: Long!
+}
+
+# Mutation root
+type Mutation {
+  activateEmailTemplateJob(id: ID!): Void
+  deactivateEmailTemplateJob(id: ID!): Void
+  triggerEmailTemplateJob(id: ID!): Void
+  deleteEmailTemplate(id: ID!): Void
+  deleteEmailTemplateJob(id: ID!): Void
+  sendEmail(input: EmailTemplateSendDtoInput!): Void
+  updateEmailTemplate(input: EmailTemplateInput!): EmailTemplate!
+  updateEmailTemplateJob(input: EmailTemplateJobModelInput!): EmailTemplateJobModel!
+}
+
+type EmailTemplateParameterValue {
+  alias: String!
+  bigDecimalValue: BigDecimal
+  booleanValue: Boolean
+  dateTimeValue: LocalDateTime
+  dateValue: Date
+  integerValue: Int
+  stringValue: String
+  timeValue: LocalTime
+  type: ParameterType!
+}
+
+# Query root
+type Query {
+  emailMessage(id: ID!): EmailMessage!
+  emailMessageList(page: OffsetPageInput, sort: [EmailMessageOrderByInput], filter: EmailMessageFilterInput): EmailMessageResultPage!
+  emailTemplate(id: ID!): EmailTemplate!
+  emailTemplateJob(id: ID!): EmailTemplateJobModel!
+  emailTemplateJobList(sort: [EmailTemplateJobOrderByInput]): [EmailTemplateJobModel]!
+  emailTemplateList(page: OffsetPageInput, sort: [EmailTemplateOrderByInput], filter: EmailTemplateFilterInput): EmailTemplateResultPage!
+  userInfo: UserInfo
+  userPermissions: [String]
+}
+
+input EmailMessageFilterInput {
+  to: String
+  from: String
+  subject: String
+  createdDateBefore: LocalDateTime
+  createdDateAfter: LocalDateTime
+  sendingDateBefore: LocalDateTime
+  sendingDateAfter: LocalDateTime
+  sendingStatuses: [SendingStatus]
+}
+
+type UserInfo {
+  username: String
+}
+
+enum EmailMessageOrderByProperty {
+  CREATED_DATE
+  FROM
+  SENDING_STATUS
+  SENDING_DATE
+  SUBJECT
+}
+
+enum EmailTemplateJobOrderByProperty {
+  CRON_EXPRESSION
+  DESCRIPTION
+  EMAIL_TEMPLATE_NAME
+  STATE
+  START_DATE
+  END_DATE
+}
+
+enum EmailTemplateOrderByProperty {
+  CODE
+  NAME
+}
+
+enum JobState {
+  ACTIVE
+  PAUSED
+}
+
+enum ParameterType {
+  BIG_DECIMAL
+  BOOLEAN
+  DATE
+  DATE_TIME
+  INTEGER
+  STRING
+  TIME
+}
+
+enum SendingStatus {
+  NOT_SENT
+  SENDING
+  SENT
+}
+
+enum SortDirection {
+  ASC
+  DESC
+}
+
+scalar BigDecimal
+
+scalar BigInteger
+
+scalar Date
+
+scalar DateTime
+
+scalar LocalDateTime
+
+scalar LocalTime
+
+scalar Long
+
+scalar Time
+
+scalar Timestamp
+
+scalar Url
+
+scalar Void
+
+input EmailMessageOrderByInput {
+  direction: SortDirection
+  property: EmailMessageOrderByProperty
+}
+
+input EmailTemplateAttachmentInput {
+  emailTemplate: EmailTemplateInput
+  id: ID
+  name: String!
+  version: Int
+}
+
+input EmailTemplateInput {
+  attachments: [EmailTemplateAttachmentInput]
+  bcc: [String!]
+  bodyContent: String!
+  cc: [String!]
+  code: String!
+  description: String
+  from: String
+  id: ID
+  name: String!
+  parameters: [EmailTemplateParameterInput]
+  subject: String
+  to: [String!]
+  version: Int
+}
+
+input EmailTemplateJobModelInput {
+  bcc: [String!]
+  cc: [String!]
+  cronExpression: String!
+  startDate: LocalDateTime
+  endDate: LocalDateTime
+  description: String!
+  emailTemplate: EmailTemplateInput!
+  from: String
+  id: String
+  parameterValues: [EmailTemplateParameterValueInput]
+  state: JobState
+  subject: String
+  to: [String!]
+}
+
+input EmailTemplateJobOrderByInput {
+  direction: SortDirection
+  property: EmailTemplateJobOrderByProperty
+}
+
+input EmailTemplateOrderByInput {
+  direction: SortDirection
+  property: EmailTemplateOrderByProperty
+}
+
+input EmailTemplateParameterInput {
+  alias: String!
+  emailTemplate: EmailTemplateInput!
+  id: ID
+  name: String!
+  orderNumber: Int
+  parameterType: ParameterType!
+  required: Boolean
+  version: Int
+}
+
+input EmailTemplateFilterInput {
+  nameOrCode: String
+  name: String
+}
+
+input EmailTemplateSendDtoInput {
+  bcc: [String!]
+  cc: [String!]
+  emailTemplateId: String!
+  from: String
+  parameterValues: [EmailTemplateParameterValueInput]
+  subject: String
+  to: [String!]
+}
+
+input OffsetPageInput {
+  number: Int!
+  size: Int!
+}
+
+input EmailTemplateParameterValueInput {
+  alias: String!
+  bigDecimalValue: BigDecimal
+  booleanValue: Boolean
+  dateTimeValue: LocalDateTime
+  dateValue: Date
+  integerValue: Int
+  stringValue: String
+  timeValue: LocalTime
+  type: ParameterType!
+}
+

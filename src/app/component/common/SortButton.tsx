@@ -1,5 +1,5 @@
 import {Button, SortPayload, useListContext, useTranslate, useTranslateLabel} from "react-admin";
-import * as React from "react";
+
 import {useCallback, useState} from "react";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
