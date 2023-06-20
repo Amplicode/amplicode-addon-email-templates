@@ -1,6 +1,6 @@
 {
   "name": "@amplicode/addon-email-templates",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Email templates addon for amplicode frontend app",
   "publishConfig": {
     "access": "public"
