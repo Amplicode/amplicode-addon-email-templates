@@ -1,0 +1,24 @@
+{
+  "scripts": [
+    "https://cdn.ckeditor.com/4.16.0/standard-all/ckeditor.js"
+  ],
+  "resources": [
+    {
+      "name": "EmailTemplate",
+      "label": "Email Template",
+      "recordRepresentation": "getEmailTemplateRecordRepresentation",
+      "list": "EmailTemplateListAdvanced",
+      "create": "EmailTemplateCreateAdvanced",
+      "edit": "EmailTemplateEditAdvanced"
+    }
+  ],
+  "menu": [
+    {
+      "ResourceItem": "EmailTemplate"
+    }
+  ],
+  "i18n": [
+    "src/core/i18n/messages/en.ts",
+    "src/core/i18n/messages/ru.ts"
+  ]
+}
